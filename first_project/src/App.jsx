@@ -43,7 +43,7 @@ const App = () => {
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies.Please try again later.");
     } finally {
-      setIsLoading(false);
+      setIsLoading(true);
     }
   };
 
@@ -52,8 +52,6 @@ const App = () => {
   }, []);
   return (
     <main>
-      <div className="pattern" />
-
       <div className="wrapper">
         <header>
           <img src="./hero.png" alt="Hero Banner" />
@@ -69,18 +67,16 @@ const App = () => {
 
           {isLoading ? (
             // 1. = 연산자 추가
-            <p className="text-white">Loading...</p>
+            <Spinner />
           ) : errorMessage ? (
             // 2. 변수 닫는 중괄호 } 추가
             <p className="text-red-500">{errorMessage}</p>
           ) : (
             <ul>
               {movieList.map((movie) => (
-                // 3. key 추가 (movie.id가 있다고 가정)
-                // 4. <ul>의 자식으로 <li> 사용 권장
-                <li key={movie.id}>
-                  <p className="text-white">{movie.title}</p>
-                </li>
+                <p key={movie.id} className="text-white">
+                  {movie.title}
+                </p>
               ))}
             </ul>
           )}
