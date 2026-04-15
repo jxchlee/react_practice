@@ -43,6 +43,7 @@ const App = () => {
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies.Please try again later.");
     } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,12 +68,20 @@ const App = () => {
           <h2>All Movies</h2>
 
           {isLoading ? (
-            <p className"text-white"> Loading...</p>
+            // 1. = 연산자 추가
+            <p className="text-white">Loading...</p>
           ) : errorMessage ? (
-            <p className="text-red-500">{errorMessage</p>
+            // 2. 변수 닫는 중괄호 } 추가
+            <p className="text-red-500">{errorMessage}</p>
           ) : (
             <ul>
-              
+              {movieList.map((movie) => (
+                // 3. key 추가 (movie.id가 있다고 가정)
+                // 4. <ul>의 자식으로 <li> 사용 권장
+                <li key={movie.id}>
+                  <p className="text-white">{movie.title}</p>
+                </li>
+              ))}
             </ul>
           )}
         </section>
