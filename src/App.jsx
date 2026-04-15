@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Search from "./components/Search";
+import Spinner from "./components/Spinner";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 
@@ -43,7 +44,7 @@ const App = () => {
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies.Please try again later.");
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
@@ -63,12 +64,13 @@ const App = () => {
         </header>
 
         <section className="all-movies">
-          <h2>All Movies</h2>
+          <h2 className="mt-[40px]">All Movies</h2>
 
           {isLoading ? (
             // 1. = 연산자 추가
             <Spinner />
-          ) : errorMessage ? (
+          ) : // " 로딩ㅈ ㅜㅇ시발"
+          errorMessage ? (
             // 2. 변수 닫는 중괄호 } 추가
             <p className="text-red-500">{errorMessage}</p>
           ) : (
