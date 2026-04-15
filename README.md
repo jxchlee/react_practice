@@ -80,3 +80,9 @@ npm run lint
 - 현재 영화 카드는 제목만 렌더링합니다.
 - 검색창은 UI만 준비되어 있고 실제 검색 기능은 미구현 상태입니다.
 - TMDB 토큰이 없거나 잘못되면 영화 목록을 불러오지 못합니다.
+
+## Source
+
+- This code is based on the following references:
+- Video: https://www.youtube.com/watch?v=dCLhUialKPQ
+- Repository: https://github.com/adrianhajdin/react-movies
